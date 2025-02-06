@@ -1,0 +1,3 @@
+Code -r project : To open the project folder as a singleton folder closing the parent folder in vscode .Here project is the name of the folder
+
+After npm create vite@latest if we give . as the project name it will put all the files in same folder without creating new folder.
