@@ -4,25 +4,34 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './components/Navbar'
 
+console.log(Navbar)
 function App() {
   const [count, setCount] = useState(0)
-  const [first, setfirst] = useState(0)
+  // const [first, setfirst] = useState(0)
+  const [color, setcolor] = useState(0)
 
+
+
+  //Case 3:Run only when certain value change
   useEffect(() => {
-    alert("Heyy welcome to my page")
-  }, [])
-  
-  useEffect(() => {
-    alert("COunt was changed")
+    alert("Heyy I am running only when color was changed")
+    setcolor(color+1)
   }, [count])
 
-  useEffect(() => {
-    alert("First was changed")
-  }, [first])
+  // useEffect(() => {
+  //   alert("First was changed")
+  // }, [first])
+
+  // useEffect(() => {
+  //   alert("Heyy . This is the first render off app.jsx")
+  //   return()=>{
+  //     alert("Component was unmounted")
+  //   }
+  // }, [])
 
   return (
     <>
-    <Navbar color = {"Cyan " + "Blue"}/>
+    <Navbar color = {"Cyan " + "Blue"+color}/>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
