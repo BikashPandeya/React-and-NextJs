@@ -19,7 +19,10 @@ function App() {
 
   const handleChange = (e) => {
     // setName(e.target.value)
-    setForm({...form, [e.target.name]:e.target.value}) // When you use the syntax [e.target.name]: e.target.value, it will update the value of the key that corresponds to the name attribute of the input field in your form state.
+    setForm({...form, [e.target.name]:e.target.value}) // When you use the syntax [e.target.name]: e.target.value, it will update the value of the key that corresponds to the name attribute of the input field in your form state.  
+    /*const obj = {
+  [dynamicKey]: value
+}*/
     console.log(e.target.value)
       // With ...form: The spread operator ensures that the previous state is preserved, and only the specific field being updated (email or phone) is changed.
     // Without ...form: The entire state will be replaced with only the updated field, causing the other fields to be lost (and possibly resulting in errors or unexpected behavior).
