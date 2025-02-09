@@ -10,20 +10,20 @@ const App = () => {
         const response = await fetch("https://jsonplaceholder.typicode.com/posts");
         const jsonData = await response.json();
         setData(jsonData);
+        console.log(jsonData)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-    console.log(data)
   }, []);
 
   return (
     <div className="container">
       {data.map(
         (item) => {
-          return (<div className="card">
+          return (<div key={item.id} className="card">
             <div className="Title">{item.title}</div>
             <div className="description">{item.body}</div>
           </div>)
