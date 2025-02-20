@@ -2,34 +2,57 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 const Card = ({ title }) => {
-  const [likecount, setlikecount] = useState(0);
-  const [dislikecount, setdislikecount] = useState(0);
+  const [likeCount, setLikeCount] = useState(0);
+  const [dislikeCount, setDislikeCount] = useState(0);
   const [hasLiked, setHasLiked] = useState(false);
-  const [dislike, setdislike] = useState(false)
+  const [hasDisliked, setHasDisliked] = useState(false);
 
   useEffect(() => {
     console.log(`${title} has been liked: ${hasLiked}`);
   }, [hasLiked]);
 
-//   useEffect(() => {
-//     console.log("Card Rendered");
-//   }, []);
+  const handleLike = () => {
+    if (hasLiked) {
+      setLikeCount((prev) => prev - 1);
+      setHasLiked(false);
+    } else {
+      setLikeCount((prev) => prev + 1);
+      setHasLiked(true);
+      
+      // If disliked, remove dislike
+      if (hasDisliked) {
+        setDislikeCount((prev) => prev - 1);
+        setHasDisliked(false);
+      }
+    }
+  };
 
-
-  
+  const handleDislike = () => {
+    if (hasDisliked) {
+      setDislikeCount((prev) => prev - 1);
+      setHasDisliked(false);
+    } else {
+      setDislikeCount((prev) => prev + 1);
+      setHasDisliked(true);
+      
+      // If liked, remove like
+      if (hasLiked) {
+        setLikeCount((prev) => prev - 1);
+        setHasLiked(false);
+      }
+    }
+  };
 
   return (
-    <div>
-      <h2>
-        {title} <br /> {likecount ?likecount : null} <br/> {dislikecount ? dislikecount : null}
-      </h2>
-      <button onClick={() => {setHasLiked(!hasLiked) , setlikecount((prevState) => prevState + 1);}} >
-        {hasLiked ? "❤️" : "🤍"}
-        <span>Like</span>
+    <div className="card">
+      <h2>{title}</h2>
+      <p>Likes: {likeCount}</p>
+      <p>Dislikes: {dislikeCount}</p>
+      <button onClick={handleLike}>
+        {hasLiked ? "❤️" : "🤍"} <span>Like</span>
       </button>
-      <button onClick={() => {setdislike(!dislike) , setdislikecount((prevState) => prevState + 1);}}>
-        {dislike ? "🖤" : "🤍"}
-        <span>Dislike</span>
+      <button onClick={handleDislike}>
+        {hasDisliked ? "🖤" : "🤍"} <span>Dislike</span>
       </button>
     </div>
   );
