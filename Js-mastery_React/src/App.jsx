@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 const Card = ({ title }) => {
-  const [count, setcount] = useState(0);
+  const [likecount, setlikecount] = useState(0);
+  const [dislikecount, setdislikecount] = useState(0);
   const [hasLiked, setHasLiked] = useState(false);
+  const [dislike, setdislike] = useState(false)
 
   useEffect(() => {
     console.log(`${title} has been liked: ${hasLiked}`);
@@ -13,18 +15,23 @@ const Card = ({ title }) => {
 //     console.log("Card Rendered");
 //   }, []);
 
+
+  
+
   return (
     <div
-      className="card"
-      onClick={() => {
-        setcount((prevState) => prevState + 1);
-      }}
+     
     >
       <h2>
         {title} <br /> {count ? count : null}
       </h2>
-      <button onClick={() => setHasLiked(!hasLiked)}>
+      <button onClick={() => {setHasLiked(!hasLiked)}} >
         {hasLiked ? "❤️" : "🤍"}
+        <span>Like</span>
+      </button>
+      <button onClick={() => setdislike(!dislike)}>
+        {dislike ? "🖤" : "🤍"}
+        <span>Dislike</span>
       </button>
     </div>
   );
