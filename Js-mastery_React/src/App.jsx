@@ -19,17 +19,15 @@ const Card = ({ title }) => {
   
 
   return (
-    <div
-     
-    >
+    <div>
       <h2>
-        {title} <br /> {count ? count : null}
+        {title} <br /> {likecount ?likecount : null} <br/> {dislikecount ? dislikecount : null}
       </h2>
-      <button onClick={() => {setHasLiked(!hasLiked)}} >
+      <button onClick={() => {setHasLiked(!hasLiked) , setlikecount((prevState) => prevState + 1);}} >
         {hasLiked ? "❤️" : "🤍"}
         <span>Like</span>
       </button>
-      <button onClick={() => setdislike(!dislike)}>
+      <button onClick={() => {setdislike(!dislike) , setdislikecount((prevState) => prevState + 1);}}>
         {dislike ? "🖤" : "🤍"}
         <span>Dislike</span>
       </button>
